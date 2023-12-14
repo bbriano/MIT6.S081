@@ -1,0 +1,3 @@
+[submodule "xv6/xv6-labs-2021"]
+	path = xv6/xv6-labs-2021
+	url = http://github.com/bbriano/xv6-labs-2021

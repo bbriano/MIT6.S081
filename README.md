@@ -29,3 +29,27 @@ Xv6 System calls
 	int stat(char *file, struct stat *st)  // Place info about a named file into *st.
 	int link(char *file1, char *file2)     // Create another name (file2) for the file file1.
 	int unlink(char *file)                 // Remove a file.
+
+Compiling with Docker
+---------------------
+
+Create docker container. You only need to run this once.
+
+	local$ docker run -it -v `pwd`/xv6:/xv6 --name xv6 debian:12
+
+Once logged in, install the dependencies.
+`make qemu` runs xv6 with qemu, you should see a prompt.
+
+	xv6$ apt update
+	xv6$ apt install -y git build-essential gdb-multiarch qemu-system-misc gcc-riscv64-linux-gnu binutils-riscv64-linux-gnu
+	xv6$ cd /xv6/xv6-riscv
+	xv6$ make qemu
+	...blah blah...
+	init: starting sh
+	$
+
+Note: To exit qemu emulation press `Control-A` followed by `X`.
+
+To start and connect to the container:
+
+	local$ docker start xv6 && docker attach xv6
